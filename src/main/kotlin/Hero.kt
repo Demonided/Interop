@@ -1,5 +1,8 @@
 @file:JvmName("Hero")
 
+import java.io.IOException
+import kotlin.jvm.Throws
+
 fun main() {
     val adversary = Jhava()
     println(adversary.utterGreeting())
@@ -23,11 +26,20 @@ fun main() {
     }
 }
 
+val translator = { utterance: String ->
+    println(utterance.toLowerCase().capitalize())
+}
+
 fun makeProclamation() = "Greetings, beast!"
 
 @JvmOverloads
 fun handOverFood(leftHand: String = "berries", rightHand: String = "beef") {
     println("Mmmm... you hand over some delicious $leftHand and $rightHand.")
+}
+
+@Throws(IOException::class)
+fun acceptApology() {
+    throw IOException()
 }
 
 class Spellbook {

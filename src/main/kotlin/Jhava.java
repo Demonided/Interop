@@ -1,5 +1,10 @@
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.io.IOException;
+import java.util.function.Function;
 
 public class Jhava {
 
@@ -18,6 +23,9 @@ public class Jhava {
         System.out.println("Max spell count: " + Spellbook.MAX_SPELL_COUNT);
 
         Spellbook.getSpellbookGreting();
+
+        Function1<String, Unit> translator = Hero.getTranslator();
+        translator.invoke("TRUCE");
     }
 
     @NotNull
@@ -48,5 +56,13 @@ public class Jhava {
 
     public void extendHandInFriendship() throws Exception {
         throw new Exception();
+    }
+
+    public void apologize() {
+        try {
+            Hero.acceptApology();
+        } catch (IOException e) {
+            System.out.println("Caught!");
+        }
     }
 }
